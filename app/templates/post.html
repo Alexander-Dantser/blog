@@ -20,16 +20,17 @@
       </nav>
     </header>
     <main>
+      {{ post.image.url }}
       <div class="post-container">
         <div>
-          <div class="title">Заголовок</div>
-          <div class="info">Дата добавлено автором</div>
+          <div class="title">{{ post.title }}</div>
+          <div class="info">Добавлено {{ post.created_at|date:'d.M.Y' }}</div>
         </div>
 
         <div class="image">
           <img src="{{ post.image.url }}" alt="" />
         </div>
-        <div class="post-body">Тело поста</div>
+        <div class="post-body">{{ post.body }}</div>
       </div>
     </main>
   </body>

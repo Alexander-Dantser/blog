@@ -8,7 +8,5 @@ def home(request):
     return render(request, 'home.html', {'posts': posts})
 
 def post(request, pk):
-    return render(request, 'post.html', {})
-
-    # post = Post.objects.get(id=pk)
-    # return render(request, 'post.html', {'post': post})
+    post_data = Post.objects.get(id=pk)
+    return render(request, 'post.html', {'post': post_data})
