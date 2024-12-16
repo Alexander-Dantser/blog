@@ -20,4 +20,21 @@ def create_post(request):
         if form.is_valid():
             form.save()
             return redirect('app:home')
-    return render(request, 'create_post.html', {'form': form})
+    return render(request, 'post_form.html', {'form': form})
+
+def edit_post(request, pk):
+    post_data = Post.objects.get(id=pk)
+    form = PostForm(request.POST or None, request.FILES or None, instance=post_data)
+    if form.is_valid():
+        form.save()
+        return redirect('app:post', pk=post_data.pk)
+    
+    
+    return render(request, 'post_form.html', {'form': form})
+ 
+    # if request.method == 'POST':
+    #     form = PostForm(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('app:home')
+    # return render(request, 'edit_post.html', {'form': form})
