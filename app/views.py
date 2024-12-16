@@ -31,10 +31,3 @@ def edit_post(request, pk):
     
     
     return render(request, 'post_form.html', {'form': form})
- 
-    # if request.method == 'POST':
-    #     form = PostForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('app:home')
-    # return render(request, 'edit_post.html', {'form': form})
