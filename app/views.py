@@ -31,3 +31,14 @@ def edit_post(request, pk):
     
     
     return render(request, 'post_form.html', {'form': form})
+
+def delete_post(request, pk):
+    post_data = Post.objects.get(id=pk)
+
+    if request.method == 'POST':
+        post_data.delete()
+        return redirect('app:home')
+    return render(request, 'delete_post.html', {'pk': pk})
+    # post_data = Post.objects.get(id=pk)
+    # post_data.delete()
+    # return redirect('app:home')
