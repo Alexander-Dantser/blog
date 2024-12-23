@@ -4,7 +4,9 @@
   <div class="container">
     <form method="post">
       {% csrf_token %}
-      {{ form }}
+      {% for field in form %}
+        <div class="field">{{ field }}</div>
+      {% endfor %}
       <button class="button primary">Войти</button>
     </form>
   </div>
