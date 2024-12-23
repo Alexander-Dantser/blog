@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import LoginForm
 from django.contrib.auth import login, logout
-# Create your views here.
+from .forms import *
+
 
 def log_in(request):
     form = LoginForm(data =request.POST or None)
@@ -11,4 +11,17 @@ def log_in(request):
         login(request, user)
         return redirect('app:home')
     
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'auth.html', {'form': form, "title": "Вход"})
+
+
+def log_out(request):
+    logout(request)
+    return redirect('app:home')
+
+
+def register(request):
+    form = RegisterForm(data=request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('users:login')
+    return render(request, 'auth.html', {"form": form,"title": "Регистрация"})
