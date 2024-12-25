@@ -6,7 +6,7 @@ class Post(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     image = models.ImageField(blank=True, default='default.png')
-    autor = models.ForeignKey('auth.User', on_delete=models.CASCADE, default=1)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, default=1)
     
     def __str__(self):
         return self.title
